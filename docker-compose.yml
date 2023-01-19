@@ -1,0 +1,17 @@
+version: '2'
+services:
+  redis:
+    image: redislabs/redismod
+    container_name: redis
+    ports:
+      - 6379:6379
+  web:
+    build: /home/ubuntu/dockerpython
+    container_name: web
+    ports:
+      - 5000:5000
+    volumes:
+      - .:/home/ubuntu/dockerpython
+    depends_on:
+      - redis
+
